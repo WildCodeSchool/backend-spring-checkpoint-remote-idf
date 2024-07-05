@@ -8,14 +8,14 @@ public class Comment {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String message;
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.REFRESH, optional = false)
     @JoinColumn(name = "post_id" , nullable = false)
     @JsonIgnore
     private Post post;
 
-    public int getId() {
+    public Long getId() {
         return id;
     }
     public String getMessage() {
