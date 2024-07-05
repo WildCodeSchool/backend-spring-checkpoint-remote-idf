@@ -1,4 +1,4 @@
-package checkpoint.spring.config;
+package checkpoint.spring.remote.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
