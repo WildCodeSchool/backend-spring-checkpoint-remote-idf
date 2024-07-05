@@ -1,27 +1,34 @@
-package checkpoint.spring.remote.entity;
+package com.wild.checkpoint.demo.Entity;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 
 @Entity
-public class Post {
-
+public class Posts {
     @Id
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
-    private String message;
-    private String imageUrl;
+    String message;
+    String imageUrl;
+    Boolean commentIsVisible = false;
 
-    public Post() {
-    }
+    @OneToMany(mappedBy = "posts")
+    List<Comment> comments = new ArrayList<Comment>();
 
-    public Post(Long id, String message, String imageUrl) {
-        this.id = id;
-        this.message = message;
-        this.imageUrl = imageUrl;
-    }
+    @ManyToOne()
+    @JoinColumn(name = "user_id")
+    User author;
+
+    public Posts() {}
 
     public Long getId() {
         return id;
@@ -45,5 +52,29 @@ public class Post {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public Boolean getCommentIsVisible() {
+        return commentIsVisible;
+    }
+
+    public void setCommentIsVisible(Boolean commentIsVisible) {
+        this.commentIsVisible = commentIsVisible;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
     }
 }

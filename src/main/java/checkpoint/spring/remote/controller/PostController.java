@@ -1,24 +1,50 @@
-package checkpoint.spring.remote.controller;
-
-import checkpoint.spring.remote.entity.Post;
-import checkpoint.spring.remote.service.PostService;
-import io.swagger.v3.oas.annotations.Operation;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+package com.wild.checkpoint.demo.Controller;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/posts")
-public class PostController {
-        @Autowired
-        private PostService postService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-        @Operation(summary = "Get all posts", description = "Get all posts")
-        @GetMapping("")
-        public List<Post> getAll() {
-                return postService.getAllPosts();
+import com.wild.checkpoint.demo.Entity.Posts;
+import com.wild.checkpoint.demo.Entity.User;
+import com.wild.checkpoint.demo.Service.PostsService;
+import com.wild.checkpoint.demo.Service.UserService;
+
+@RestController
+public class PostsController {
+
+        @Autowired
+        PostsService postsService;
+
+        @GetMapping("/posts")
+        public List<Posts> GetPosts(){
+                return this.postsService.getPosts();
+        }
+
+        @GetMapping("/posts/{id}")
+        public Posts GetPostById(@PathVariable Long id){
+                return this.postsService.getPost(id);
+        }
+
+        @PostMapping("/posts")
+        public Posts createPost(@RequestBody Posts post){
+                return this.postsService.createPost(post);
+
+        }
+
+        @PutMapping("/posts/{id}")
+        public Posts updatePost(@PathVariable Long id, @RequestBody Posts post){
+                return this.postsService.updatePost(id, post);
+        }
+
+        @DeleteMapping("/posts/{id}")
+        public boolean deletePost(@PathVariable Long id){
+                return this.postsService.deleteUser(id);
         }
 }
