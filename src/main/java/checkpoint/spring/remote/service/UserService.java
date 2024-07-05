@@ -10,7 +10,7 @@ import checkpoint.spring.remote.repository.UserRepository;
 
 @Service
 public class UserService {
-    
+
     @Autowired
     private UserRepository userRepository;
 
