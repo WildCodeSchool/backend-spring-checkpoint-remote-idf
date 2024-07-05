@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.catalina.connector.Response;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,9 +14,11 @@ import checkpoint.spring.remote.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping("/users")
@@ -36,6 +39,26 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> getUsers = userService.getUsers();
         return ResponseEntity.ok(getUsers);
+    }
+
+    @Operation(summary = "Get user by id", description = "Get user by id")
+    @GetMapping("/{userId}")
+    public ResponseEntity<User> getUserById(@PathVariable Long userId) {
+        User user = userService.getUserById(userId);
+        return ResponseEntity.ok(user);
+    }
+
+    @Operation(summary = "Update user", description = "Update user by id")
+    @PutMapping("/{userId}")
+    public ResponseEntity<User> updateUser(@PathVariable Long userId, @RequestBody User user) {
+        User updatedUser = userService.updateUser(userId, user);
+        return ResponseEntity.ok(updatedUser);
+    }
+
+    @Operation(summary = "Delete user", description = "Delete user")
+    @DeleteMapping("/{id}")
+    public void deleteUser(@PathVariable Long id) {
+        this.userService.deleteUser(id);
     }
 
 }
