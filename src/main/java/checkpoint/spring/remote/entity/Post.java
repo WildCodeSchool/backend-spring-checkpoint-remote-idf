@@ -29,9 +29,10 @@ public class Post {
     public Post() {}
 
 
-    public Post(String message, String imageUrl) {
+    public Post(String message, String imageUrl, List<Comment> comments) {
         this.message = message;
         this.imageUrl = imageUrl;
+        this.comments = comments;
     }
     
     public Long getId() {
@@ -53,5 +54,14 @@ public class Post {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+    public List<Comment> getComments() {
+        return this.comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
 
 }
