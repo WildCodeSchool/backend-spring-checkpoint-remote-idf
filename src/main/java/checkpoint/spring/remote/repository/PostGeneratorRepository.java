@@ -22,7 +22,7 @@ public class PostGeneratorRepository implements CommandLineRunner {
             List<Post> posts = new ArrayList<>();
             List<Comment> comments = new ArrayList<>();
 
-            posts.add(new Post("hello new post", "https://www.change-your-home.com/wp-content/uploads/2019/10/meuse-chasse-balle-pied-770x400.jpg"));
+            posts.add(new Post("hello new post", "https://i.pinimg.com/474x/f7/fd/b5/f7fdb540ec1938b4ab8f06fd0f8499f4--yellow-labrador-puppies-labrador-dogs.jpg"));
 
             comments.add(new Comment("c'est vraiment joli post", posts.get(0)));
 
