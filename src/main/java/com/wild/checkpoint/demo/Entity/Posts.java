@@ -28,6 +28,8 @@ public class Posts {
     @JoinColumn(name = "user_id")
     User author;
 
+    public Posts() {}
+
     public Long getId() {
         return id;
     }

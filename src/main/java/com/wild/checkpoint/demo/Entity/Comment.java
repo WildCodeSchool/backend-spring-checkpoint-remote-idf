@@ -14,6 +14,8 @@ public class Comment {
     private Long id;
     private String message;
 
+    public Comment(){}
+
     @JoinColumn(name = "post_id")
     private Posts posts;
 

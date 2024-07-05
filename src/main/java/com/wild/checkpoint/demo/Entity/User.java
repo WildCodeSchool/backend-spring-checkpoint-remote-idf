@@ -23,6 +23,8 @@ public class User {
     @OneToMany()
     List<Posts> posts = new ArrayList<Posts>();
 
+    public User() {}
+
     public List<Posts> getPosts() {
         return posts;
     }
