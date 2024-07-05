@@ -1,9 +1,14 @@
 package checkpoint.spring.remote.entity;
 
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class Post {
@@ -14,10 +19,15 @@ public class Post {
     private String message;
     private String imageUrl;
 
+    @JsonIgnore
+    @OneToMany(mappedBy= "post")
+    private List<Comment> comments;
+
     public Post() {
     }
 
-    public Post(Long id, String imageUrl, String message) {
+    public Post(List<Comment> comments, Long id, String imageUrl, String message) {
+        this.comments = comments;
         this.id = id;
         this.imageUrl = imageUrl;
         this.message = message;
@@ -43,6 +53,13 @@ public class Post {
         this.imageUrl = imageUrl;
     }
 
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
 
     
 }
