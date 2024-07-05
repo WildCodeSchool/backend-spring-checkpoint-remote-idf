@@ -5,6 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Comment {
@@ -18,6 +19,7 @@ public class Comment {
 
     public Comment(){}
 
+    @ManyToOne()
     @JoinColumn(name = "post_id")
     private Posts posts;
 
