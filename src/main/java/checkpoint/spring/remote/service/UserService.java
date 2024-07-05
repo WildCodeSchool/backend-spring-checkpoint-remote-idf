@@ -23,4 +23,8 @@ public class UserService {
         User user = this.userRepository.findById(id).get();
         return user;
     }
+    
+    public User addOne(User user) {
+    	return this.userRepository.save(user);
+    }
 }
