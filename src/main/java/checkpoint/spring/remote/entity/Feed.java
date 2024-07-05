@@ -1,6 +1,7 @@
 package checkpoint.spring.remote.entity;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "feeds")
@@ -15,13 +16,15 @@ public class Feed {
 
     private String imageUrl;
 
+    @OneToMany(mappedBy = "feeds")
+    private List<Comment> comments;
+
     public Feed() {
     }
 
     public Feed(String message, String imageUrl) {
         this.message = message;
         this.imageUrl = imageUrl;
-
     }
 
     public Long getId() {
@@ -46,6 +49,14 @@ public class Feed {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
     }
 
 }

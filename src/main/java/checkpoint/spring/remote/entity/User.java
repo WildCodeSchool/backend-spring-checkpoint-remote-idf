@@ -1,6 +1,6 @@
 package checkpoint.spring.remote.entity;
 
-import java.util.List;
+
 
 import jakarta.persistence.*;
 
