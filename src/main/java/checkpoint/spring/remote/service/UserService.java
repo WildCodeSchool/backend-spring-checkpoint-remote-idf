@@ -23,5 +23,14 @@ public class UserService {
         User user = this.userRepository.findById(id).get();
         return user;
     }
+
+    public User updateUser(Long id, User user) {
+        User retrievedUser = this.userRepository.findById(id).get();
+        retrievedUser.setFirstname(user.getFirstname());
+        retrievedUser.setLastname(user.getLastname());
+        retrievedUser.setimageUrl(user.getimageUrl());
+        
+        return this.userRepository.save(retrievedUser);
+    }
     
 }

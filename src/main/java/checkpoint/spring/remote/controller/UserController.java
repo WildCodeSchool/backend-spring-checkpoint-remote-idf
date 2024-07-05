@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -29,6 +31,12 @@ public class UserController {
     @GetMapping("/{id}")
     public User getOneById(@PathVariable Long id) {
         return this.userService.getOneById(id);
+    }
+
+    @Operation(summary = "Update user", description = "Update user")
+    @PutMapping("/{id}")
+    public User updateUser(@PathVariable Long id, @RequestBody User user) {
+        return this.userService.updateUser(id, user);
     }
 
 }
