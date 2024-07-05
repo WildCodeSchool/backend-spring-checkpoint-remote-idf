@@ -13,13 +13,16 @@ public class User {
     private String firstname;
 
     private String lastname;
+    @Column(columnDefinition = "TEXT")
+    private String imageUrl;
 
     public User() {
     }
 
-    public User(String firstname, String lastname) {
+    public User(String firstname, String lastname, String imageUrl) {
         this.firstname = firstname;
         this.lastname = lastname;
+        this.imageUrl = imageUrl;
     }
 
     public Long getId() {
@@ -44,6 +47,14 @@ public class User {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
 }
