@@ -1,5 +1,7 @@
 package com.wild.checkpoint.demo;
 
+import java.util.ArrayList;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -18,9 +20,11 @@ public class DemoApplication {
 		var user1 = new User();
 		user1.setFirstname("Joe");
 		user1.setLastname("start");
+		user1.setImageUrl("https://www.change-your-home.com/wp-content/uploads/2019/10/meuse-chasse-balle-pied-770x400.jpg");
 		var user2 = new User();
 		user2.setFirstname("Baden");
 		user2.setLastname("Powell");
+		user1.setImageUrl("https://www.change-your-home.com/wp-content/uploads/2019/10/meuse-chasse-balle-pied-770x400.jpg");
 
 		var post = new Posts();
 		var comment= new Comment();
@@ -34,6 +38,10 @@ public class DemoApplication {
 
 		var commentService = new CommentService();
 		commentService.CreateComment(comment);
+
+		var listeComment = new ArrayList<Comment>();
+		listeComment.add(comment);
+		
 	}
 
 }

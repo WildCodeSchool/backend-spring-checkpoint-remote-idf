@@ -20,7 +20,7 @@ public class User {
     private String lastname;
     private String imageUrl;
 
-    @OneToMany()
+    @OneToMany(mappedBy = "user")
     List<Posts> posts = new ArrayList<Posts>();
 
     public User() {}
