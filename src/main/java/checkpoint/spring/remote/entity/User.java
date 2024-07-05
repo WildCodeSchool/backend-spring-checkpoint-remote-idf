@@ -13,7 +13,7 @@ public class User {
     private String firstname;
 
     private String lastname;
-    @Column(columnDefinition = "TEXT")
+    @Column(columnDefinition = "varchar(255)")
     private String imageUrl;
 
     public User() {
