@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -28,18 +28,18 @@ public class UserController {
     }
 
     @Operation(summary = "Get user by Id", description = "Get user by Id")
-    @PostMapping("")
-    public User createUser(@RequestBody User user) {
-        User newUser = this.userRepository.save(user);
-        return newUser;
+    @GetMapping("/{id}")
+    public User createUser(@PathVariable Long id) {
+        return this.userRepository.findById(id).get();
     }
 
     @Operation(summary = "Update user", description = "Update user")
-    @PostMapping("/{id}")
+    @PutMapping("/{id}")
     public User update(@PathVariable Long id, @RequestBody User user) {
         User updateUser = this.userRepository.findById(id).get();
         updateUser.setFisrtname(user.getFirstname());
         updateUser.setLastname(user.getLastname());
+        updateUser.setImageUrl(user.getimageUrl());
         return this.userRepository.save(updateUser);
     }
 

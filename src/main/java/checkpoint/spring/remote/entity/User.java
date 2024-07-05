@@ -14,6 +14,7 @@ public class User {
     private Long id;
     private String firstname;
     private String lastname;
+    private String imageUrl;
 
     public User() {
 
@@ -42,5 +43,13 @@ public class User {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public String getimageUrl() {
+        return this.imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
