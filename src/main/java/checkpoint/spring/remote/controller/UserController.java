@@ -29,7 +29,7 @@ public class UserController {
 
     @Operation(summary = "Get user by Id", description = "Get user by Id")
     @GetMapping("/{id}")
-    public User createUser(@PathVariable Long id) {
+    public User getById(@PathVariable Long id) {
         return this.userRepository.findById(id).get();
     }
 
