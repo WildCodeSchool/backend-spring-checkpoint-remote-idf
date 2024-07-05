@@ -1,60 +1,54 @@
 package checkpoint.spring.remote.Entity;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="post")
-public class Post {
+@Table(name="comment")
+public class Comment {
 
-      @Id
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String message;
-    private String imageUrl;
 
-   @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
-    private List<Comment> comments;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "post_id")
+    @JsonIgnore
+    private Post post;
 
-    public Post() {
+
+    
+    public Comment() {
     }
 
-    public Post(String imageUrl, String message) {
-        this.imageUrl = imageUrl;
+    
+    public Comment(String message,Post post) {
         this.message = message;
+        this.post = post;
     }
+
 
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
     public String getMessage() {
         return message;
     }
-
     public void setMessage(String message) {
         this.message = message;
     }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
 
     
 
