@@ -15,10 +15,8 @@ public class User {
     private String firstname;
 
     private String lastname;
-    private String imageUrl;
 
-    @OneToMany(mappedBy = "user")
-    private List<Feed> feeds;
+    private String imageUrl;
 
     public User() {
     }
@@ -27,6 +25,7 @@ public class User {
         this.firstname = firstname;
         this.lastname = lastname;
         this.imageUrl = imageUrl;
+
     }
 
     public Long getId() {
@@ -59,14 +58,6 @@ public class User {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public List<Feed> getFeeds() {
-        return feeds;
-    }
-
-    public void setFeeds(List<Feed> feeds) {
-        this.feeds = feeds;
     }
 
 }
