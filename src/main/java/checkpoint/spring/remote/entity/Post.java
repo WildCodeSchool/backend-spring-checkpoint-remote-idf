@@ -3,6 +3,8 @@ package checkpoint.spring.remote.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,10 +18,14 @@ public class Post {
 
     private String imageUrl;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
     public Post() {
     }
 
-    public Post(String message, String imageUrl) {
+    public Post(String message, String imageUrl, User user) {
         this.message = message;
         this.imageUrl = imageUrl;
     }

@@ -11,7 +11,7 @@ import jakarta.persistence.Table;
 public class User {
     @Id
     @GeneratedValue
-    private Long id;
+    private int id;
 
     private String firstname;
 
@@ -25,7 +25,7 @@ public class User {
         this.lastname = lastname;
     }
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
