@@ -22,7 +22,6 @@ import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
 @RequestMapping("/posts")
-@CrossOrigin(origins = "http://localhost:4200")
 public class FeedController {
     @Autowired
     private FeedService feedService;
