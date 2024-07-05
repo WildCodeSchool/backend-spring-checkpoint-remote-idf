@@ -15,11 +15,14 @@ public class User {
 
     private String firstname;
 
-    private String Lastname;
+    private String lastname;
+
+    public User() {
+    }
 
     public User(String firstname, String lastname) {
         this.firstname = firstname;
-        Lastname = lastname;
+        this.lastname = lastname;
     }
 
     public Long getId() {
@@ -35,10 +38,10 @@ public class User {
     }
 
     public String getLastname() {
-        return Lastname;
+        return lastname;
     }
 
     public String setLastname(String lastname) {
-        return Lastname = lastname;
+        return this.lastname = lastname;
     }
 }
