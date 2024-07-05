@@ -1,39 +1,35 @@
 package checkpoint.spring.remote.entity;
 
-import java.util.List;
-
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "post")
-public class Post {
-
+@Table(name = "comment")
+public class Comment {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(columnDefinition = "TEXT")
     private String message;
 
-    private String imageUrl;
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
 
-    @OneToMany(mappedBy = "post")
-    private List<Comment> comments;
-
-    public Post() {}
+    public Comment() {}
 
 
-    public Post(String message, String imageUrl) {
+    public Comment(String message, Post post) {
         this.message = message;
-        this.imageUrl = imageUrl;
+        this.post = post;
     }
-    
+
     public Long getId() {
         return this.id;
     }
@@ -46,12 +42,12 @@ public class Post {
         this.message = message;
     }
 
-    public String getImageUrl() {
-        return this.imageUrl;
+    public Post getPost() {
+        return this.post;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setPost(Post post) {
+        this.post = post;
     }
 
 }

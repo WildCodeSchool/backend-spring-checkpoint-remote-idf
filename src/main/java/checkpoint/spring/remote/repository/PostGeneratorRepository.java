@@ -15,7 +15,7 @@ public class PostGeneratorRepository implements CommandLineRunner{
     @Autowired
     private PostRepository postRepository;
 
-     @Override
+    @Override
     public void run(String... args) throws Exception {
         if(this.postRepository.count() == 0) {
 
