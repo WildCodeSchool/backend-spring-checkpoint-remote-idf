@@ -1,9 +1,13 @@
 package com.wild.checkpoint.demo.Entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 
 @Entity
 public class User {
@@ -14,6 +18,18 @@ public class User {
 
     private String firstname;
     private String lastname;
+    private String imageUrl;
+
+    @OneToMany()
+    List<Posts> posts = new ArrayList<Posts>();
+
+    public List<Posts> getPosts() {
+        return posts;
+    }
+    public void setPosts(List<Posts> posts) {
+        this.posts = posts;
+    }
+
     public Long getId() {
         return id;
     }
@@ -32,8 +48,11 @@ public class User {
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
+    public String getImageUrl() {
+        return imageUrl;
+    }
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
-    
-
-    
 }
