@@ -8,26 +8,25 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import checkpoint.spring.remote.entity.User;
-import checkpoint.spring.remote.service.UserService;
+import checkpoint.spring.remote.entity.Post;
+import checkpoint.spring.remote.service.PostService;
 import io.swagger.v3.oas.annotations.Operation;
 
 @RestController
-@RequestMapping("/users")
-public class UserController {
-    
+@RequestMapping("/posts")
+public class PostController {
     @Autowired
-    private UserService userService;
+    private PostService postService;
 
-    @Operation(summary = "Get all users")
+    @Operation(summary = "Get all posts")
     @GetMapping("")
-    public List<User> getAllUsers(){
-        return userService.getAllUsers();
+    public List<Post> getAllPosts(){
+        return postService.getAllPosts();
     }
 
-    @Operation(summary = "Get user by id")
+    @Operation(summary = "Get post by id")
     @GetMapping("/{id}")
-    public User getUserById(@PathVariable Long id){
-        return userService.getUserById(id);
+    public Post getPostById(@PathVariable Long id){
+        return postService.getPostById(id);
     }
 }
