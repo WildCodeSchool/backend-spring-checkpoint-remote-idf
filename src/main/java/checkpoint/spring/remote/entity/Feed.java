@@ -3,7 +3,7 @@ package checkpoint.spring.remote.entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "feeds")
 public class Feed {
 
     @Id
@@ -15,17 +15,13 @@ public class Feed {
 
     private String imageUrl;
 
-    @ManyToOne
-    @JoinColumn(name = "users_id")
-    private User user;
-
     public Feed() {
     }
 
-    public Feed(String message, String imageUrl, User user) {
+    public Feed(String message, String imageUrl) {
         this.message = message;
         this.imageUrl = imageUrl;
-        this.user = user;
+
     }
 
     public Long getId() {
@@ -50,14 +46,6 @@ public class Feed {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 
 }
