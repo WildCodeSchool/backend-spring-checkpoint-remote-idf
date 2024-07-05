@@ -1,5 +1,6 @@
 package checkpoint.spring.remote.service;
 
+import checkpoint.spring.remote.entity.Comment;
 import checkpoint.spring.remote.entity.Feed;
 import checkpoint.spring.remote.entity.User;
 import java.util.*;
@@ -15,6 +16,11 @@ public class FeedService {
     private FeedRepository feedRepository;
 
     public Feed addFeed(Feed feed) {
+
+        List<Comment> comments = feed.getComments();
+        for (Comment comment : comments) {
+            comment.setFeeds(feed);
+        }
         return feedRepository.save(feed);
     }
 

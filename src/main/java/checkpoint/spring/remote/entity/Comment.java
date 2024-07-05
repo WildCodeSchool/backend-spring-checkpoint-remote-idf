@@ -19,9 +19,8 @@ public class Comment {
     public Comment() {
     }
 
-    public Comment(String message, Feed feeds) {
+    public Comment(String message) {
         this.message = message;
-        this.feeds = feeds;
     }
 
     public Long getId() {
