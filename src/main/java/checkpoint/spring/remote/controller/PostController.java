@@ -37,7 +37,7 @@ public class PostController {
     @PostMapping("/{id}")
     public Post update(@PathVariable Long id, @RequestBody Post post) {
         Post updatePost = this.postRepository.findById(id).get();
-        updatePost.setImage(post.getImage());
+        updatePost.setImageUrl(post.getImageUrl());
         updatePost.setMessage(post.getMessage());
         return this.postRepository.save(updatePost);
     }

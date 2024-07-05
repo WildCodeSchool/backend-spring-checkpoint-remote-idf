@@ -45,11 +45,11 @@ public class Post {
         this.message = message;
     }
 
-    public String getImage() {
+    public String getImageUrl() {
         return this.imageUrl;
     }
 
-    public void setImage(String imageUrl) {
+    public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
 
